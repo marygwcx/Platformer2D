@@ -12,15 +12,25 @@ public class PlayerHealth : MonoBehaviour
     public Sprite halfHeart;
     public Sprite emptyHeart;
 
-    private int health;
+
+    public int health;
 
     void Start()
     {
         health = maxHealth;
     }
 
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            health -= 1;
+        }
+    }
+
     public void TakeDamage(int damage)
     {
+        
         health -= damage;
 
         if (health < 0)
